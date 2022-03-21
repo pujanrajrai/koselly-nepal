@@ -1,0 +1,98 @@
+{% extends 'home/base.html' %}
+{% block body %}
+    <!-- Shop Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-12">
+                <!-- Price Start -->
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+                    <form method="get" action="{% url 'home:search' %}">
+                        <input type="hidden" name="search" value="{{ search }}">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" {% if price == '' %}checked{% endif %} id="price-all">
+                            <label class="custom-control-label" for="price-all">All Price</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="1000" type="checkbox" {% if price == '1000' %}checked{% endif %} class="custom-control-input" id="price-1">
+                            <label class="custom-control-label" for="price-1">Rs.0 - Rs.1000</label>
+                        </div>
+                        <div
+                                class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="10000" type="checkbox" {% if price == '10000' %}checked{% endif %} class="custom-control-input" id="price-2">
+                            <label class="custom-control-label" for="price-2">Upto Rs.10000</label>
+                        </div>
+                        <div
+                                class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="100000" type="checkbox" {% if price == '100000' %}checked{% endif %} class="custom-control-input" id="price-3">
+                            <label class="custom-control-label" for="price-3">Upto Rs.1 Lakh</label>
+                        </div>
+
+                        <div>
+                            <input type="submit" class="mt-5 btn btn-warning" value="Apply Filter">
+                        </div>
+                    </form>
+                </div>
+                <!-- Price End -->
+
+                <!-- Begin to Make other checkbox unchecked if one of them is checked -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('input:checkbox').click(function () {
+                            $('input:checkbox').not(this).prop('checked', false);
+                        });
+                    });
+                </script>
+                <!-- End to Make other checkbox unchecked if one of them is checked -->
+
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-12">
+                <div class="row pb-3">
+                    <div class="col-12 pb-1">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+
+                        </div>
+                    </div>
+                    {% for product in products %}
+                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="{{ product.photo.url }}" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">{{ product.name }}</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>Rs.{{ product.price }}</h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="{% url 'home:product_desc' product.pk %}" class="btn btn-sm text-dark p-0"><i
+                                            class="fas fa-eye text-primary mr-1"></i>View
+                                        Detail</a>
+                                    <form method="post" action="{% url 'home:add_to_cart' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ product.pk }}" name="product_id">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <button type="submit" class="btn btn-sm text-dark p-0"><i
+                                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+{% endblock %}

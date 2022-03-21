@@ -1,0 +1,15 @@
+{% extends 'dashboard/base.html' %}
+{% block title %} Property Category{% endblock %}
+{% block pagetitle %}Property Category Add Update{% endblock %}
+{% block body %}
+
+    <div class="card-body">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ form.media }}
+            <input type="submit" value="Create Category" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}
