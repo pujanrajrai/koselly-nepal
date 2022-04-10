@@ -22,7 +22,7 @@
                             Address : {{ profile.default_shipping_address }}<br>
                             Phone Number : {{ profile.phone_number }}<br>
                             Date of birth : {{ profile.dob }}<br>
-                            <a href="{% url 'my_profile:profile_update' %}" class="btn btn-success">Update Profile</a>
+                            <a href="{% url 'my_profile:profile_update' profile.pk %}" class="btn btn-success">Update Profile</a>
                             <br>
                         {% endfor %}
                     </div>

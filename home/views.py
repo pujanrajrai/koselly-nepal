@@ -177,6 +177,12 @@ def search(request):
         product = Product.objects.filter(Q(name__contains=query) | Q(categories__name__contains=query)).filter(
             is_available=True).filter(stock__gt=0).order_by('-total_click')
         context = {}
+
+        try:
+            season = request.GET['season']
+            product = product.filter(season__name=season)
+        except:
+            season = ''
         try:
             price = request.GET["price"]
             product = product.filter(price__lte=price)
@@ -186,6 +192,7 @@ def search(request):
             pass
         context['search'] = search
         context['products'] = product
+        context['season'] = season
 
         return render(request, 'home/search.html', context)
 
@@ -200,3 +207,21 @@ def view_all_product(request):
 @is_admin_or_user()
 def esewa_failure(request):
     return redirect('home:show_cart')
+
+
+def winter_season(request):
+    context = {
+        'products': Product.objects.filter(season__name='Winter'),
+        'season': 'Winter',
+    }
+
+    return render(request, 'home/search.html', context)
+
+
+def summer_season(request):
+    context = {
+        'products': Product.objects.filter(season__name='Summer'),
+        'season': 'Summer',
+    }
+
+    return render(request, 'home/search.html', context)

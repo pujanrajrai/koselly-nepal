@@ -10,7 +10,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 
 from .models import Profile
 from datetime import date
-from .forms import ProfileForms
+from .forms import ProfileForms, ProfileUpdateForms
 
 
 class CreateProfile(CreateView):
@@ -47,14 +47,13 @@ class ProfileListView(ListView):
 
 
 class ProfileUpdateView(UpdateView):
-    form_class = ProfileForms
+    form_class = ProfileUpdateForms
     success_url = "/profile/view/"
     template_name = 'myprofile/update_profile.html'
-
-    def get_object(self, **kwargs):
-        return Profile.objects.get(user=self.request.user)
+    model = Profile
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs['user_id'] = self.request.user
         return kwargs
+

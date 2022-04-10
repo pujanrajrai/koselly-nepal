@@ -40,16 +40,19 @@
                             {{ order.1 }}
                         </td>
                         <td>
-                            {{ order.2 }}
+                            {% if order.2 == True %}Paid
+                            {% else %}
+                                Unpaid
+                            {% endif %}
                         </td>
                         <td>
                             {{ order.3 }}
                         </td>
                         <td>
                             {% if order.5 == True %}Delivered{% elif order.4 == True %}On the Way
-                                 {% else %}
+                            {% else %}
                                 Order Placed
-                                {% endif %}
+                            {% endif %}
                         </td>
                         <td>
                             <a href="{% url 'home:view_order_details' order.0 %}" class="btn btn-success">View Order
