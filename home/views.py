@@ -180,7 +180,10 @@ def search(request):
 
         try:
             season = request.GET['season']
-            product = product.filter(season__name=season)
+            if season:
+                product = product.filter(season__name=season)
+
+
         except:
             season = ''
         try:
@@ -190,7 +193,7 @@ def search(request):
         except:
             context['price'] = ''
             pass
-        context['search'] = search
+        context['search'] = query
         context['products'] = product
         context['season'] = season
 

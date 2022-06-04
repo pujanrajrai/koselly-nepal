@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rjymuwj29)iww)z^t!ek!+up(74%=nv1vq=+fz^_*7r_yk4-#-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -141,18 +141,10 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# email setting setup
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'testalias223@gmail.com'
-EMAIL_HOST_PASSWORD = 'test@13!A'
-EMAIL_USE_TLS = True
-
-
 
 # email setting setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'pant4673@gmail.com'
-EMAIL_HOST_PASSWORD = 'amit4714'
+EMAIL_HOST_PASSWORD = 'ywirlvgmjwnnhoxd'
 EMAIL_USE_TLS = True
