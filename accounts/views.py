@@ -113,13 +113,18 @@ def verify_email(request):
 def login(request):
     if request.user.is_authenticated:
         if request.user:
-            return redirect('home:home')
+            
+            return redirect('my_profile:profile_create')
+            # return redirect('dashboard:')
     if request.method == 'POST':
         if request.user.is_authenticated:
             if request.user:
-                return redirect('home:home')
+                return redirect('my_profile:profile_create')
+                # return redirect('home:home')
             else:
-                return redirect('home:home')
+                return redirect('my_profile:profile_create')
+
+                # return redirect('home:home')
         email = request.POST['email']
         password = request.POST['password']
         user = auth.authenticate(email=email, password=password)
@@ -131,9 +136,13 @@ def login(request):
                                    'n.html', context)
 
         if request.user:
-            return redirect('home:home')
+            return redirect('my_profile:profile_create')
+
+            # return redirect('home:home')
         else:
-            return redirect('home:home')
+            return redirect('my_profile:profile_create')
+
+            # return redirect('home:home')
     return render(request, 'accounts/login.html')
 
 

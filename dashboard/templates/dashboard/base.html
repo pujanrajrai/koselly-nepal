@@ -74,12 +74,12 @@
                             </a>
                         </li>
                         {% if not request.user.is_admin %}
-                            <li class="sidebar-item">
+                            {% comment %} <li class="sidebar-item">
                                 <a href="{% url 'chats:view_chat' 'admin' %}" class='sidebar-link'>
                                     <i class="bi bi-chat"></i>
                                     <span>Chat</span>
                                 </a>
-                            </li>
+                            </li> {% endcomment %}
                         {% endif %}
                         <li class="sidebar-item">
                             <a href="{% url 'accounts:password_change' %}" class='sidebar-link'>
