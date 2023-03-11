@@ -149,3 +149,4 @@ EMAIL_HOST_USER = 'adhakarihimal@gmail.com'
 EMAIL_HOST_PASSWORD = 'ucwyqozochmnzwex'
 EMAIL_USE_TLS = True
 
+
