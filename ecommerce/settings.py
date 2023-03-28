@@ -44,7 +44,7 @@ DJANGO_APP = [
     'cart',
     'dashboard',
     'home',
-    'chat'
+    'chat',
 ]
 THIRD_PARTY_APP = [
     'ckeditor'
@@ -142,11 +142,10 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# email setting setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'adhakarihimal@gmail.com'
-EMAIL_HOST_PASSWORD = 'ucwyqozochmnzwex'
+EMAIL_HOST_USER = 'bizil.prajapati2@gmail.com'
+EMAIL_HOST_PASSWORD = 'ymcblxeiolunhgho'
 EMAIL_USE_TLS = True
 
 

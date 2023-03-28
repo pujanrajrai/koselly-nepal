@@ -20,6 +20,7 @@ class Season(models.Model):
 
 
 class Product(models.Model):
+    user=models.ForeignKey(MyUser,on_delete=models.PROTECT,null=True,blank=True)
     name = models.CharField(max_length=100)
     price = models.PositiveIntegerField()
     categories = models.ForeignKey(ProductCategories, on_delete=models.PROTECT)

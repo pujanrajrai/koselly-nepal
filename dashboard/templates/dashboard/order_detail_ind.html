@@ -15,6 +15,7 @@
         <tr>
 
             <tr>
+                <th>User</th>
                     <th>Products</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -26,6 +27,13 @@
         {% for order in my_orders %}
 
                     <tr>
+                        <td class="align-middle">
+                            {% if not order.product.user %}
+                            Admin
+                            {%else%}
+                            {{order.product.user}}
+                            {%endif%}
+                        </td>
                         <td class="align-middle"><img src="{{ order.product.photo.url }}" alt=""
                                                       style="width: 50px;">
                             {{ order.product.name }}

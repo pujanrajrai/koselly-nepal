@@ -206,6 +206,11 @@ def view_all_product(request):
     }
     return render(request, 'home/all_product.html', context)
 
+def view_customer_product(request):
+    context = {
+        'products': Product.objects.filter(is_available=True).filter(user__is_admin=False).filter(stock__gt=0).order_by('-create_date'),
+    }
+    return render(request, 'home/all_product.html', context)
 
 @is_admin_or_user()
 def esewa_failure(request):

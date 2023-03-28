@@ -3,7 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 from .models import ProductCategories, Product
 
 from .forms import ProductCategoriesForm, ProductForm
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -32,11 +32,23 @@ class ProductCreateView(CreateView):
     success_url = '/product/list/'
     template_name = 'products/product_create_update.html'
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
 
 class ProductListView(ListView):
     model = Product
     context_object_name = 'products'
     template_name = 'products/product_list_view.html'
+
+    def get_queryset(self):
+        if self.request.user.is_admin:
+            queryset=Product.objects.filter(Q(user=None)|Q(user__is_admin=True))
+        else:
+            queryset=Product.objects.filter(user=self.request.user)
+        return queryset
 
 
 class ProductUpdateView(UpdateView):
@@ -45,3 +57,5 @@ class ProductUpdateView(UpdateView):
     template_name = 'products/product_create_update.html'
     success_url = '/product/list/'
     success_message = 'Product Updated Successfully'
+
+    
