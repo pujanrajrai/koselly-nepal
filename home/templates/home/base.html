@@ -109,12 +109,18 @@
                             <a href="{% url 'accounts:login' %}" class="nav-item nav-link">Login</a>
                             <a href="{% url 'accounts:register' %}" class="nav-item nav-link">Register</a>
                         </div>
+
+
+
+
+                        
                     {% else %}
                         <div class="navbar-nav ml-auto py-0">
                             <a href="{% url 'my_profile:profile_list_view' %}" class="nav-item nav-link">View Profile</a>
                             <a href="{% url 'accounts:logout' %}" class="nav-item nav-link">Logout</a>
                         </div>
                     {% endif %}
+
                 </div>
             </nav>
 
