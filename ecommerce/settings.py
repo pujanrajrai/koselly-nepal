@@ -44,11 +44,12 @@ DJANGO_APP = [
     'cart',
     'dashboard',
     'home',
-    'chat',
 ]
+
 THIRD_PARTY_APP = [
     'ckeditor'
 ]
+
 INSTALLED_APPS = INSTALLED_APPS + DJANGO_APP + THIRD_PARTY_APP
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,8 +66,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,6 +147,3 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'bizil.prajapati2@gmail.com'
 EMAIL_HOST_PASSWORD = 'ymcblxeiolunhgho'
 EMAIL_USE_TLS = True
-
-
-

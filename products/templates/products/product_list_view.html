@@ -20,7 +20,6 @@
                 <th>Name</th>
                 <th>Categories</th>
                 <th>Photo</th>
-                <th>Description</th>
                 <th>Stock</th>
                 <th>Created Date</th>
                 <th>Discount</th>
@@ -30,15 +29,14 @@
             <tbody>
             {% for product in products %}
                 <tr>
+                    
                     <td>{{ forloop.counter }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.categories.name }}</td>
                     <td><img src="{{ product.photo.url }}" height="50" width="65"></td>
-                    <td>{{ product.desc|safe|slice:'20' }}</td>
                     <td>{{ product.stock }}</td>
                     <td>{{ product.create_date|date:'y-m-d' }}</td>
                     <td>{{ product.discount_amt }}</td>
-
                     <td><a href="{% url 'product:product_update' product.pk %}" class="btn btn-danger">Update</a>
                     </td>
                 </tr>

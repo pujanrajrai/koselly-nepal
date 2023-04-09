@@ -1,3 +1,5 @@
+import string
+import random
 from datetime import datetime, timezone
 from random import randint
 from django.contrib import auth
@@ -14,24 +16,31 @@ from ecommerce.settings import EMAIL_HOST_USER
 
 
 def register(request):
+    # check if the user is already authenticated, if so redirect them to the home page
     if request.user.is_authenticated:
         if request.user:
             return redirect('home:home')
+
+    # initialize the form with an empty form
     context = {'form': MyUserCreationForm()}
+
+    # if the form has been submitted
     if request.method == 'POST':
         email = request.POST.get('email')
         context['email'] = email
-        if request.user.is_authenticated:
-            return redirect('/')
         form = MyUserCreationForm(request.POST)
         username = request.POST.get('username')
         password1 = request.POST.get('password')
         password2 = request.POST.get('password2')
+
+        # check if the password and confirm password match
         if password1 != password2:
             context['errors'] = 'Password and conform Password didnot match'
             context['email'] = request.POST['email']
             context['username'] = username
             return render(request, 'accounts/register.html', context)
+
+        # if the form is valid, save the user's information and log them in
         if form.is_valid():
             form.save()
             email = email
@@ -41,14 +50,16 @@ def register(request):
                 auth.login(request, user)
                 return redirect('accounts:send_email_verification_code')
             else:
-
                 context['errors'] = "something went wrong"
                 return render(request, 'accounts/login.html', context)
+
+        # if the form is invalid, display the errors on the registration page
         else:
             context['errors'] = form.errors
             context['email'] = request.POST['email']
             context['username'] = username
 
+    # if the form has not been submitted, display the registration page
     return render(request, 'accounts/register.html', context)
 
 
@@ -99,15 +110,29 @@ def verify_email(request):
             return redirect('my_profile:profile_create')
 
         request_code = request.POST['otp1'] + request.POST['otp2'] + request.POST['otp3'] + request.POST['otp4'] + \
-                       request.POST['otp5'] + request.POST['otp6']  # code send from user to verify
-        code = EmailVerification.objects.get(users=request.user).verification_code
+            request.POST['otp5'] + \
+            request.POST['otp6']  # code send from user to verify
+        code = EmailVerification.objects.get(
+            users=request.user).verification_code
         if request_code == code:
-            MyUser.objects.filter(email=request.user).update(is_email_verified=True)
+            MyUser.objects.filter(email=request.user).update(
+                is_email_verified=True)
             return redirect('my_profile:profile_create')
         else:
             context = {'error': 'code you have entered is wrong'}
             return render(request, 'accounts/verify_email.html', context)
     return render(request, 'accounts/verify_email.html')
+
+
+"""
+This code is for managing user authentication in a web application. 
+It checks if a user is already logged in, and if so, redirects them to the home page.
+If the user is not logged in, it checks if a login form has been submitted via a POST request. 
+If so, it checks the user's email and password against the database, 
+and if they match, logs the user in and redirects them to the home page. 
+If the email and password do not match, an error message is displayed. 
+If the user is not logged in and the login form has not been submitted, the login page is displayed.
+"""
 
 
 def login(request):
@@ -126,7 +151,8 @@ def login(request):
         if user is not None:
             auth.login(request, user)
         else:
-            context = {"errors": "User name or password is incorrect", "email": request.POST['email']}
+            context = {"errors": "User name or password is incorrect",
+                       "email": request.POST['email']}
             return render(request, 'accounts/logi'
                                    'n.html', context)
 
@@ -144,7 +170,8 @@ def password_change(request):
         old_password = request.POST['old_password']
         password = request.POST['password']
         password2 = request.POST['password2']
-        data = {"password": password, 'password2': password2, "old_password": old_password}
+        data = {"password": password, 'password2': password2,
+                "old_password": old_password}
 
         if not request.user.check_password(old_password):
             context['errors'] = 'Your password didnot match with old password'
@@ -154,7 +181,8 @@ def password_change(request):
             context['errors'] = 'your conformed password didnot matched'
         form = ChangePasswordForm(data)
         if form.is_valid():
-            MyUser.objects.filter(email=request.user).update(password=make_password(form.data['password']))
+            MyUser.objects.filter(email=request.user).update(
+                password=make_password(form.data['password']))
         else:
             context['errors'] = form.errors
     return render(request, 'accounts/change_password.html', context)
@@ -163,10 +191,6 @@ def password_change(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-
-
-import random
-import string
 
 
 def forger_password(request):
@@ -187,6 +211,7 @@ def forger_password(request):
             EMAIL_HOST_USER,
             [email],
         )
-        MyUser.objects.filter(email=email).update(password=make_password(password))
+        MyUser.objects.filter(email=email).update(
+            password=make_password(password))
         context['errors'] = 'Password has been send to your email address'
     return render(request, 'accounts/forget_password.html', context)

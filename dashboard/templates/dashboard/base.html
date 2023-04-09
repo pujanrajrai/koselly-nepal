@@ -59,12 +59,7 @@
                                 <span>Product</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="{% url 'chats:chat' %}" class='sidebar-link'>
-                                <i class="bi bi-chat"></i>
-                                <span>Chat</span>
-                            </a>
-                        </li>
+                        
                     {% endif %}
                     {% if request.user.is_authenticated %}
                         <li class="sidebar-item">
@@ -74,12 +69,7 @@
                             </a>
                         </li>
                         {% if not request.user.is_admin %}
-                            <li class="sidebar-item">
-                                <a href="{% url 'chats:view_chat' 'admin' %}" class='sidebar-link'>
-                                    <i class="bi bi-chat"></i>
-                                    <span>Chat</span>
-                                </a>
-                            </li>
+                            
                             <li class="sidebar-item">
                                 <a href="{% url 'product:product_list' %}" class='sidebar-link'>
                                     <i class="bi bi-people"></i>
