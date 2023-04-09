@@ -7,7 +7,7 @@ from cart.models import Cart
 from decorator import is_admin, is_admin_or_user, is_user
 from products.models import Product
 import uuid
-import requests as req
+
 
 
 def home(request):
