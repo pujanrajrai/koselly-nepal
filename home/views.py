@@ -153,7 +153,7 @@ def esewa_success(request):
         return HttpResponse('failure')
 
 
-@is_admin_or_user()
+# @is_admin_or_user()
 def my_order(request):
     my_order = Cart.objects.filter(user=request.user).filter(is_bought=True)
     rewards_point = my_order.aggregate(Total=(Sum('price') / 1000))['Total']
