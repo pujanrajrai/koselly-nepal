@@ -234,6 +234,16 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'home/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'home/css/main.css' %}">
 <!--===============================================================================================-->
+
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Include Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 {% block style %}{% endblock %}
 </head>
 <body class="animsition">
@@ -321,9 +331,19 @@
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
+						<!-- Friend's code for the search form -->
+						<form action="{% url 'home:search' %}" method="get">
+							<div class="input-group">
+								<input type="text" class="form-control" name="search" placeholder="Search for products" value="{{ search }}">
+								<div class="input-group-append">
+									<button class="btn btn-dark" type="submit">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					
 
 						
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
@@ -331,6 +351,7 @@
 								<i class="zmdi zmdi-shopping-cart" style="color: black;"></i>
 							</a>
 						</div>
+						
 
 						
 
