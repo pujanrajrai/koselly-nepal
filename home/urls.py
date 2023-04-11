@@ -20,7 +20,6 @@ urlpatterns = [
     path('esewa/pay/<str:orderid>/<str:price>/', views.esewa_pay, name='esewa_pay'),
     path('esewa/success/', views.esewa_success, name='esewa_success'),
     path('esewa/faliure/', views.esewa_failure, name='esewa_failure'),
-    path('winter/wear/', views.winter_season, name='winter'),
-    path('summer/wear/', views.summer_season, name='summer'),
+  
 ]
 

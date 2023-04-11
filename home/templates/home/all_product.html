@@ -4,7 +4,39 @@
     <div class="container-fluid" style="padding-top: 8rem;">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-12">
+                <!-- Price Start -->
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4 mt-5">Filter by price</h5>
+                    <form method="get" action="{% url 'home:search' %}">
 
+                    <input type="hidden" name="season" value="{{ season }}">
+                        <input type="hidden" name="search" value="{{ search }}">
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" {% if price == '' %}checked{% endif %} id="price-all">
+                            <label class="custom-control-label" for="price-all">All Price</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="1000" type="checkbox" {% if price == '1000' %}checked{% endif %} class="custom-control-input" id="price-1">
+                            <label class="custom-control-label" for="price-1">Rs.0 - Rs.1000</label>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="10000" type="checkbox" {% if price == '10000' %}checked{% endif %} class="custom-control-input" id="price-2">
+                            <label class="custom-control-label" for="price-2">Upto Rs.10000</label>
+                        </div>
+                        <div
+                                class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input name="price"  value="100000" type="checkbox" {% if price == '100000' %}checked{% endif %} class="custom-control-input" id="price-3">
+                            <label class="custom-control-label" for="price-3">Upto Rs.1 Lakh</label>
+                        </div>
+
+                        <div>
+                            <input type="submit" class="mt-5 btn btn-warning" value="Apply Filter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-12">
                 <div class="row pb-3">

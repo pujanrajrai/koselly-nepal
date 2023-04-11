@@ -12,11 +12,6 @@ class ProductCategories(models.Model):
         return self.name
 
 
-class Season(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
 
 
 class Product(models.Model):
@@ -26,7 +21,6 @@ class Product(models.Model):
     categories = models.ForeignKey(ProductCategories, on_delete=models.PROTECT)
     photo = models.ImageField(upload_to='products')
     desc = RichTextField()
-    season = models.ForeignKey(Season, on_delete=models.SET_NULL, blank=True, null=True)
     stock = models.PositiveIntegerField()
     create_date = models.DateField(auto_now=True)
     total_click = models.PositiveIntegerField(default=0)

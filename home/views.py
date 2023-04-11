@@ -217,19 +217,3 @@ def esewa_failure(request):
     return redirect('home:show_cart')
 
 
-def winter_season(request):
-    context = {
-        'products': Product.objects.filter(season__name='Winter'),
-        'season': 'Winter',
-    }
-
-    return render(request, 'home/search.html', context)
-
-
-def summer_season(request):
-    context = {
-        'products': Product.objects.filter(season__name='Summer'),
-        'season': 'Summer',
-    }
-
-    return render(request, 'home/search.html', context)
