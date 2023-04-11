@@ -68,15 +68,7 @@
                                 <span>Profile</span>
                             </a>
                         </li>
-                        {% if not request.user.is_admin %}
-                            
-                            <li class="sidebar-item">
-                                <a href="{% url 'product:product_list' %}" class='sidebar-link'>
-                                    <i class="bi bi-people"></i>
-                                    <span>Product</span>
-                                </a>
-                            </li>
-                        {% endif %}
+                        
                         <li class="sidebar-item">
                             <a href="{% url 'accounts:password_change' %}" class='sidebar-link'>
                                 <i class="bi bi-file-lock"></i>

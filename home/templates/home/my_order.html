@@ -1,17 +1,19 @@
 {% extends 'home/base.html' %}
-{% block body %}
+{% block content %}
     <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h3 class="font-weight-semi-bold text-uppercase mb-3">Total Reward Point -- {{ rewards_point }} --</h3>
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Order Details</h1>
+    <div class="container-fluid bg-primary mb-5" style="margin-top: 8rem; margin-bottom: 8rem;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;">
+            <h3 class="font-weight-bold text-uppercase mb-2">Total Reward Points: {{ rewards_point }}</h3>
+            <h1 class="font-weight-bold text-uppercase mb-3">Order Details</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="/">Home</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Order Details</p>
+                <p class="m-0"><a href="/" class="text-light">Home</a></p>
+                <p class="m-0 px-1 text-light">-</p>
+                <p class="m-0 text-light">Order Details</p>
             </div>
         </div>
     </div>
+    
+    
     <!-- Page Header End -->
 
     <!-- Cart Start -->

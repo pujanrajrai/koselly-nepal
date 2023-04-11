@@ -7,6 +7,7 @@ from django.db.models import Q
 
 # Create your views here.
 
+
 class ProductCategoriesListView(ListView):
     model = ProductCategories
     context_object_name = 'categories'
@@ -44,10 +45,9 @@ class ProductListView(ListView):
     template_name = 'products/product_list_view.html'
 
     def get_queryset(self):
-        if self.request.user.is_admin:
-            queryset=Product.objects.filter(Q(user=None)|Q(user__is_admin=True))
-        else:
-            queryset=Product.objects.filter(user=self.request.user)
+
+        queryset = Product.objects.all()
+
         return queryset
 
 
@@ -57,5 +57,3 @@ class ProductUpdateView(UpdateView):
     template_name = 'products/product_create_update.html'
     success_url = '/product/list/'
     success_message = 'Product Updated Successfully'
-
-    
