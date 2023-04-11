@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
-{% block body %}
+{% block content %}
     <!-- Shop Start -->
-    <div class="container-fluid pt-5">
+    <div class="container-fluid" style="padding-top: 8rem;">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
 
@@ -26,15 +26,13 @@
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="{% url 'home:product_desc' product.pk %}" class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-eye text-primary mr-1"></i>View
-                                        Detail</a>
+                                    <a href="{% url 'home:product_desc' product.pk %}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-dark mr-1"></i>View Detail</a>
                                     <form method="post" action="{% url 'home:add_to_cart' %}">
                                         {% csrf_token %}
                                         <input type="hidden" value="{{ product.pk }}" name="product_id">
                                         <input type="hidden" value="1" name="quantity">
                                         <button type="submit" class="btn btn-sm text-dark p-0"><i
-                                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                                                class="fas fa-shopping-cart text-dark mr-1"></i>Add To Cart
                                         </button>
                                     </form>
                                 </div>

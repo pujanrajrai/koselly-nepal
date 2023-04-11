@@ -1,3 +1,5 @@
+import string
+import random
 from datetime import datetime, timezone
 from random import randint
 from django.contrib import auth
@@ -99,10 +101,13 @@ def verify_email(request):
             return redirect('my_profile:profile_create')
 
         request_code = request.POST['otp1'] + request.POST['otp2'] + request.POST['otp3'] + request.POST['otp4'] + \
-                       request.POST['otp5'] + request.POST['otp6']  # code send from user to verify
-        code = EmailVerification.objects.get(users=request.user).verification_code
+            request.POST['otp5'] + \
+            request.POST['otp6']  # code send from user to verify
+        code = EmailVerification.objects.get(
+            users=request.user).verification_code
         if request_code == code:
-            MyUser.objects.filter(email=request.user).update(is_email_verified=True)
+            MyUser.objects.filter(email=request.user).update(
+                is_email_verified=True)
             return redirect('my_profile:profile_create')
         else:
             context = {'error': 'code you have entered is wrong'}
@@ -113,34 +118,34 @@ def verify_email(request):
 def login(request):
     if request.user.is_authenticated:
         if request.user:
-            
+
             return redirect('my_profile:profile_create')
             # return redirect('dashboard:')
     if request.method == 'POST':
         if request.user.is_authenticated:
             if request.user:
-                return redirect('my_profile:profile_create')
-                # return redirect('home:home')
+                # return redirect('my_profile:profile_create')
+                return redirect('home:home')
             else:
-                return redirect('my_profile:profile_create')
-
-                # return redirect('home:home')
+                # return redirect('my_profile:profile_create')
+                return redirect('home:home')
         email = request.POST['email']
         password = request.POST['password']
         user = auth.authenticate(email=email, password=password)
         if user is not None:
             auth.login(request, user)
         else:
-            context = {"errors": "User name or password is incorrect", "email": request.POST['email']}
+            context = {"errors": "User name or password is incorrect",
+                       "email": request.POST['email']}
             return render(request, 'accounts/logi'
                                    'n.html', context)
 
-        if request.user:
-            return redirect('my_profile:profile_create')
+        # if request.user:
+        #     return redirect('my_profile:profile_create')
 
-            # return redirect('home:home')
-        else:
-            return redirect('my_profile:profile_create')
+        #     # return redirect('home:home')
+        # else:
+        #     return redirect('my_profile:profile_create')
 
             # return redirect('home:home')
     return render(request, 'accounts/login.html')
@@ -153,7 +158,8 @@ def password_change(request):
         old_password = request.POST['old_password']
         password = request.POST['password']
         password2 = request.POST['password2']
-        data = {"password": password, 'password2': password2, "old_password": old_password}
+        data = {"password": password, 'password2': password2,
+                "old_password": old_password}
 
         if not request.user.check_password(old_password):
             context['errors'] = 'Your password didnot match with old password'
@@ -163,7 +169,8 @@ def password_change(request):
             context['errors'] = 'your conformed password didnot matched'
         form = ChangePasswordForm(data)
         if form.is_valid():
-            MyUser.objects.filter(email=request.user).update(password=make_password(form.data['password']))
+            MyUser.objects.filter(email=request.user).update(
+                password=make_password(form.data['password']))
         else:
             context['errors'] = form.errors
     return render(request, 'accounts/change_password.html', context)
@@ -172,10 +179,6 @@ def password_change(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-
-
-import random
-import string
 
 
 def forger_password(request):
@@ -196,6 +199,7 @@ def forger_password(request):
             EMAIL_HOST_USER,
             [email],
         )
-        MyUser.objects.filter(email=email).update(password=make_password(password))
+        MyUser.objects.filter(email=email).update(
+            password=make_password(password))
         context['errors'] = 'Password has been send to your email address'
     return render(request, 'accounts/forget_password.html', context)
