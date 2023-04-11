@@ -54,7 +54,7 @@ def add_to_cart(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-@is_admin_or_user()
+# @is_admin_or_user()
 def remove_cart(request):
     if request.method == 'POST':
         Cart.objects.filter(pk=request.POST['pk']).delete()
@@ -164,7 +164,7 @@ def my_order(request):
     return render(request, 'home/my_order.html', context)
 
 
-@is_admin_or_user()
+# @is_admin_or_user()
 def view_order_details(request, orderid):
     order_details = Cart.objects.filter(order_id=orderid).filter(user=request.user)
     context = {'my_orders': order_details}
