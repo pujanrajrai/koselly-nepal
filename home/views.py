@@ -28,7 +28,7 @@ def product_desc(request, pk):
     return render(request, 'home/product_desc.html', context)
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def add_to_cart(request):
     if request.method == 'POST':
         quantity = int(request.POST['quantity'])
@@ -54,7 +54,7 @@ def add_to_cart(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def remove_cart(request):
     if request.method == 'POST':
         Cart.objects.filter(pk=request.POST['pk']).delete()
@@ -63,7 +63,7 @@ def remove_cart(request):
         return HttpResponse('Bad Request')
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def show_cart(request):
     my_cart = Cart.objects.filter(user=request.user).filter(is_bought=False)
     price = 0
@@ -73,7 +73,7 @@ def show_cart(request):
     return render(request, 'home/cart.html', context)
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def add_subtract_cart_item(request):
     if request.method == 'POST':
         cart = Cart.objects.filter(pk=request.POST['pk']).filter(user=request.user).get(is_bought=False)
@@ -96,7 +96,7 @@ def add_subtract_cart_item(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def checkout(request):
     if request.method == 'POST':
         uuid_str = str(uuid.uuid4().hex)
@@ -153,7 +153,7 @@ def esewa_success(request):
         return HttpResponse('failure')
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def my_order(request):
     my_order = Cart.objects.filter(user=request.user).filter(is_bought=True)
     rewards_point = my_order.aggregate(Total=(Sum('price') / 1000))['Total']
@@ -164,7 +164,7 @@ def my_order(request):
     return render(request, 'home/my_order.html', context)
 
 
-# @is_admin_or_user()
+@is_admin_or_user()
 def view_order_details(request, orderid):
     order_details = Cart.objects.filter(order_id=orderid).filter(user=request.user)
     context = {'my_orders': order_details}
