@@ -1,0 +1,113 @@
+can you help me ?
+Sure how can I help 
+
+are you a bot?
+yes i am a bot and my name is Smartbot, Here at your service 
+
+how are you?
+I am fine how can I help?
+
+how to create an account?
+in the top right corner, there is a login button press that and click on create a new account or press here <a href="http://127.0.0.1:8000/account/signup/">here</a> .
+
+can you show me available t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+t-shirt
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+can you show me  t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+available t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+can you  t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+show me available t-shirt?
+yes why not click <a href="http://127.0.0.1:8000/search/t-shirt/">here for complete information on tshirts available in the store</a>
+
+watches ?
+Apple watch series 7 available. for more info <a href ="http://127.0.0.1:8000/itemdetails/apple-watch-series-7/"> click here </a>
+
+can you show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+jeans
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you show me  jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you  jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store </a>
+
+jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+pant
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you show me  pants?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you  pant?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store </a>
+
+can you show me available pants?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+can you show me available jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+jeans?
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+jeans
+yes why not click <a href="http://127.0.0.1:8000/search/jeans-pant/">here for complete information on tshirts available in the store</a>
+
+iphone 13 pro max price ?
+the price of iphone 13 pro max is 179999
+
+is iphone available?
+yes it is available. do you want to shop? <a href ="http://127.0.0.1:8000/search/smart/"> click here for more info</a>
+
+shoes?
+available shoes are skechers and adidas 
+
+shoes available ?
+yes pleace chech your categorirs or <a href ="http://127.0.0.1:8000/search/shoes/"> click here for more info</a>
+
+smart devices?
+watches and phones available
+
+phones ?
+Iphone 13 pro max. for more info <a href = "http://127.0.0.1:8000/itemdetails/iphone-13-pro-max/"> click here </a>
+
+watch?
+apple watch available. for more information <a href = "http://127.0.0.1:8000/itemdetails/apple-watch-series-7/"> click here</a>

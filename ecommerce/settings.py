@@ -44,6 +44,8 @@ DJANGO_APP = [
     'cart',
     'dashboard',
     'home',
+    'chatbot',
+
 ]
 
 THIRD_PARTY_APP = [
